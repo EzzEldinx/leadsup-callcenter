@@ -74,3 +74,56 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // تحديد سكشن النتائج
+    const resultsSection = document.querySelector('#results');
+    const counters = document.querySelectorAll('.result-value');
+    let hasAnimated = false; // عشان يعد مرة واحدة بس
+
+    // دالة العداد
+    const animateNumbers = () => {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target'); // الرقم المطلوب
+            const suffix = counter.getAttribute('data-suffix') || ''; // العلامة (+ أو /5)
+            const isDecimal = counter.hasAttribute('data-decimal'); // هل فيه كسر؟
+            const speed = 150; // سرعة العداد (رقم أقل = أسرع)
+            const inc = target / speed;
+
+            let current = 0;
+
+            const updateCount = () => {
+                current += inc;
+                if (current < target) {
+                    if (isDecimal) {
+                        counter.innerText = current.toFixed(1) + suffix;
+                    } else {
+                        counter.innerText = Math.ceil(current).toLocaleString() + suffix; // toLocaleString بتحط الـ Comma (,) في الـ 100,000
+                    }
+                    requestAnimationFrame(updateCount); // تكرار سريع جداً
+                } else {
+                    // التقفيل النهائي للرقم
+                    if (isDecimal) {
+                        counter.innerText = target.toFixed(1) + suffix;
+                    } else {
+                        counter.innerText = target.toLocaleString() + suffix;
+                    }
+                }
+            };
+            updateCount();
+        });
+    };
+
+    // مراقب السكرول (Observer)
+    if (resultsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !hasAnimated) {
+                hasAnimated = true; // نقفلها عشان ماتعدش تاني
+                // بنعمل تأخير 400 مللي ثانية عشان العداد يبدأ وقت ما الكارت بيتمرجح لتحت
+                setTimeout(animateNumbers, 400); 
+            }
+        }, { threshold: 0.3 }); // بيشتغل لما 30% من السكشن يظهر
+
+        observer.observe(resultsSection);
+    }
+});
