@@ -3067,3 +3067,159 @@ textarea:focus-visible {
         opacity: 0.2 !important;
     }
 }
+
+
+/* ================= CALENDLY FREE TIER DARK MODE HACK ================= */
+.calendly-inline-widget iframe {
+    /* الفلتر ده بيعكس اللون الأبيض لأسود، وبيرجع درجات الأزرق والأخضر لأصلها تقريباً */
+    filter: invert(0.92) hue-rotate(180deg) brightness(1.05) contrast(0.95);
+    border-radius: 16px !important;
+}
+
+/* تظبيط لون الخلفية ورا الكاليندلي عشان ميبانش أي حواف بيضا */
+.calendly-inline-widget-wrapper {
+    background-color: #0a0e14;
+}
+
+
+
+/* ================= SERVICES PAGE ================= */
+
+
+/* ================= SERVICES PAGE STYLES ================= */
+
+.service-section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.service-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card-pro {
+    background: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 34px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.service-card-pro:hover {
+    border-color: rgba(0, 208, 90, 0.35);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 20px rgba(0, 208, 90, 0.08);
+}
+
+.card-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.service-card-pro h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.service-card-pro p {
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Glass Benefits Box */
+.benefits-glass-box {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    padding: 50px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.benefits-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    background: rgba(255,255,255,0.02);
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.benefits-list strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.benefit-check {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(0, 208, 90, 0.15);
+    border: 1px solid rgba(0, 208, 90, 0.4);
+    color: #00d05a;
+    display: grid;
+    place-items: center;
+    font-size: 0.85rem;
+    margin-top: 2px;
+    font-weight: 900;
+    box-shadow: 0 0 10px rgba(0, 208, 90, 0.2);
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width: 1024px) {
+    .contact-main-grid { grid-template-columns: 1fr; } 
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+    .links-col a:hover { transform: translateY(-3px); }
+    .shape-envelope { font-size: 25rem; left: -15vw; bottom: 5%; opacity: 0.2 !important; }
+    
+    .service-cards-grid, .benefits-list { grid-template-columns: 1fr; }
+    .benefits-glass-box { padding: 30px 20px; }
+}
