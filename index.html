@@ -669,15 +669,24 @@
             </div>
         </section>
 
-        <section id="contact" class="content-section contact-section reveal-section angled-cut">
+        <section id="contact" class="content-section contact-section reveal-section angled-cut" style="position: relative; overflow: hidden;">
+            <div class="bg-giant-shape shape-envelope">✉</div>
+            
             <div class="noise-bg"></div>
-            <div class="container">
+            <div class="container relative" style="z-index: 2;">
                 <div class="contact-main-grid">
+                    
                     <div class="contact-left reveal-item">
                         <p class="sp-kicker">Book Your Free Discovery Call</p>
-                        <h2 class="sp-title">Select a time that works for you below.</h2>
+                        <h2 class="sp-title" style="margin-bottom: 20px;">Select a time that works for you below.</h2>
+                        
+                        <div class="calendly-header">
+                            <img src="src/nav.png" alt="LeadsUp Icon" width="35" height="35" />
+                            <span>Leads<span class="logo-text-gradient">Up</span></span>
+                        </div>
+        
                         <div class="calendly-inline-widget-wrapper glass-effect">
-                            <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK" style="min-width:320px;height:700px;"></div>
+                            <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK?background_color=0a0e14&text_color=ffffff&primary_color=00d05a" style="min-width:320px;height:650px;"></div>
                             <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                         </div>
                     </div>
@@ -686,37 +695,42 @@
                         <p class="sp-kicker">Send Us a Message</p>
                         <h3 class="sp-title">Fill out the form below and we'll get back to you within 24 hours.</h3>
                         
-                        <form class="contact-form-pro glass-effect" action="#" method="post">
+                        <form class="contact-form-pro glass-effect" action="https://formsubmit.co/info@leadsupcallcenter.com" method="POST">
+                            
+                            <input type="hidden" name="_subject" value="New Lead from LeadsUp Website!">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+        
                             <div class="form-row">
-                                <label>Full Name * <input type="text" placeholder="John Doe" required /></label>
-                                <label>Phone Number * <input type="tel" placeholder="+1 (555) 000-0000" required /></label>
+                                <label>Full Name * <input type="text" name="name" placeholder="John Doe" required /></label>
+                                <label>Phone Number * <input type="tel" name="phone" placeholder="+1 (555) 000-0000" required /></label>
                             </div>
                             <div class="form-row">
-                                <label>Email Address * <input type="email" placeholder="john@company.com" required /></label>
-                                <label>Company Name * <input type="text" placeholder="Your Company LLC" required /></label>
+                                <label>Email Address * <input type="email" name="email" placeholder="john@company.com" required /></label>
+                                <label>Company Name * <input type="text" name="company" placeholder="Your Company LLC" required /></label>
                             </div>
-                            <label>Message <textarea rows="4" placeholder="Tell us about your needs..."></textarea></label>
+                            <label>Message <textarea name="message" rows="4" placeholder="Tell us about your needs..."></textarea></label>
                             
                             <label>How did you hear about us?
-                                <select>
-                                    <option value="">Select...</option>
-                                    <option>Google Search</option>
-                                    <option>Facebook</option>
-                                    <option>Instagram</option>
-                                    <option>LinkedIn</option>
-                                    <option>Referral</option>
-                                    <option>YouTube</option>
-                                    <option>Podcast</option>
-                                    <option>Other</option>
+                                <select name="source" class="dark-select">
+                                    <option value="Not Specified">Select...</option>
+                                    <option value="Google Search">Google Search</option>
+                                    <option value="Facebook">Facebook</option>
+                                    <option value="Instagram">Instagram</option>
+                                    <option value="LinkedIn">LinkedIn</option>
+                                    <option value="Referral">Referral</option>
+                                    <option value="YouTube">YouTube</option>
+                                    <option value="Podcast">Podcast</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </label>
         
                             <div class="consent-box">
-                                <input type="checkbox" id="consent" required>
+                                <input type="checkbox" id="consent" name="consent" required class="normal-checkbox">
                                 <label for="consent">I consent to receive marketing text messages and emails, such as Lead Generation, from Leads Up at the phone number and email I provided, including messages sent via auto dialer. *</label>
                             </div>
         
-                            <button type="submit" class="btn-primary glow-btn btn-black-text w-full">Submit Request</button>
+                            <button type="submit" class="btn-primary glow-btn btn-black-text w-full mt-15">Submit Request</button>
                         </form>
         
                         <div class="contact-info-footer-grid">
@@ -730,7 +744,7 @@
                             </div>
                             <div class="c-info-card">
                                 <strong>LOCATION</strong>
-                                <p>Operated by Adnan Ahmed<br>Registered in WY, USA<br>Operating nationwide</p>
+                                <p>Operated by Adnan Ahmed<br>Registered in WY, USA</p>
                             </div>
                         </div>
                     </div>

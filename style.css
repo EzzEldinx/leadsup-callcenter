@@ -2989,3 +2989,81 @@ textarea:focus-visible {
 }
 
 
+/* ================= CONTACT SECTION POLISH ================= */
+
+/* 1. الظرف العملاق في الخلفية */
+.shape-envelope {
+    font-size: 50rem;
+    line-height: 1;
+    bottom: -10%;
+    left: -10vw;
+    -webkit-text-stroke: 3px rgba(0, 208, 90, 0.12);
+    text-shadow: 0 0 60px rgba(0, 208, 90, 0.05);
+    animation: shapePulseLeft 8s ease-in-out infinite alternate;
+}
+
+/* 2. تظبيط اللوجو فوق الكاليندلي */
+.calendly-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 3. حل مشكلة الـ Checkbox العملاق */
+.normal-checkbox {
+    appearance: auto !important; /* بيلغي أي تأثيرات بوظته */
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px;
+    margin-top: 3px;
+    cursor: pointer;
+    accent-color: #00d05a; /* بيخلي لونه أخضر لما تدوس عليه */
+}
+
+/* 4. تظبيط الـ Select Menu (الدارك مود والـ Hover الأخضر) */
+.dark-select {
+    width: 100%;
+    background-color: #0a0e14 !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    padding: 12px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    appearance: none; /* بيلغي شكل السهم القديم */
+    /* بنرسم سهم جديد أنضف */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23ffffff' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: calc(100% - 15px) center !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-select:focus, .dark-select:hover {
+    border-color: #00d05a !important;
+    box-shadow: 0 0 0 3px rgba(0, 208, 90, 0.15) !important;
+}
+
+.dark-select option {
+    background-color: #0a0e14;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Mobile Fixes for Envelope */
+@media (max-width: 768px) {
+    .shape-envelope {
+        font-size: 25rem;
+        left: -15vw;
+        bottom: 5%;
+        opacity: 0.2 !important;
+    }
+}
