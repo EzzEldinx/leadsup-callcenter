@@ -3223,3 +3223,99 @@ textarea:focus-visible {
     .service-cards-grid, .benefits-list { grid-template-columns: 1fr; }
     .benefits-glass-box { padding: 30px 20px; }
 }
+
+
+/* ================= SERVICE SECTION CUTS ================= */
+.service-divider-cut {
+    position: relative;
+    padding-bottom: 160px !important; /* بنزود مساحة تحت عشان القطعية تاخد راحتها */
+    z-index: 1;
+}
+
+.service-divider-cut::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: #030406; /* اللون بتاع السكشن اللي تحتها عشان يندمجوا */
+    transform-origin: 0 100%; /* نقطة الارتكاز من الشمال تحت */
+    transform: skewY(2.5deg); /* زاوية الميلان */
+    z-index: 5;
+    border-top: 1px solid rgba(255, 255, 255, 0.08); /* الخط المضيء الفاصل */
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3); /* ضل ناعم للعمق */
+    pointer-events: none;
+}
+
+/* تظبيط القطعية على الموبايل */
+@media (max-width: 768px) {
+    .service-divider-cut { padding-bottom: 100px !important; }
+    .service-divider-cut::after { height: 60px; transform: skewY(1.5deg); }
+}
+
+
+/* ================= TOP GREEN SPOTLIGHT ================= */
+.top-spotlight {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150vw; /* بنخليها أعرض من الشاشة عشان الأطراف تبقى ناعمة */
+    height: 450px; /* طول مسافة الإضاءة لتحت */
+    /* التدرج اللوني: بيبدأ أخضر من النص فوق وبيسحب لشفاف لتحت */
+    background: radial-gradient(50% 100% at 50% 0%, rgba(0, 208, 90, 0.12) 0%, rgba(0, 208, 90, 0.03) 50%, transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: screen; /* السطر ده بيخليها تنور كأنها لمبة حقيقية */
+}
+
+/* ================= SERVICES SPACING & BACKDROP COLORS ================= */
+
+/* 1. زيادة المسافة بين شبكة الكروت والبوكس الإزاز اللي تحتها */
+.service-cards-grid {
+    margin-bottom: 80px !important; /* مسافة واضحة عشان ميبقوش لازقين */
+}
+
+/* 2. تلوين الأرقام العملاقة في الخلفية (Backdrop Numbers) */
+
+/* ================= NEON OUTLINED BACKDROP NUMBERS ================= */
+
+/* القاعدة العامة للأرقام العملاقة في صفحة الخدمات */
+.service-divider-cut .bg-giant-shape {
+    color: transparent !important; /* الرقم من جوه شفاف */
+    -webkit-text-fill-color: transparent !important;
+    font-size: 40rem !important;
+    font-weight: 900;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.05));
+    transition: all 0.5s ease;
+}
+
+/* رقم 01 - سكشن Cold Calling (أزرق نيون) */
+#cold-calling .bg-giant-shape {
+    -webkit-text-stroke: 1.5px rgba(79, 141, 255, 0.4) !important;
+    /* تأثير توهج النيون */
+    filter: drop-shadow(0 0 20px rgba(79, 141, 255, 0.2));
+}
+
+/* رقم 02 - سكشن Data Generation (أخضر نيون) */
+#data-generation .bg-giant-shape {
+    -webkit-text-stroke: 1.5px rgba(0, 208, 90, 0.4) !important;
+    /* تأثير توهج النيون */
+    filter: drop-shadow(0 0 20px rgba(0, 208, 90, 0.2));
+}
+
+/* لو ضفت سكشن تالت - (بنفسجي نيون مثلاً) */
+#skip-tracing .bg-giant-shape {
+    -webkit-text-stroke: 1.5px rgba(168, 85, 247, 0.4) !important;
+    filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.2));
+}
+
+/* التأكد من مسافة الـ mt-120 */
+.mt-120 { 
+    margin-top: 140px !important; /* زودتها سنة كمان عشان الصورة اللي بعتها */
+}
+
+.service-cards-grid {
+    margin-bottom: 60px !important;
+}
