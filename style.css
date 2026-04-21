@@ -3608,3 +3608,232 @@ textarea:focus-visible {
     font-size: 0.75rem !important; 
     color: #94a3b8; 
 }
+
+
+/* ================= LIVE GRADIENT GIANT NUMBER (FIXED POSITION & TRANSPARENCY) ================= */
+.live-gradient-number {
+    position: absolute;
+    /* طلعناه فوق عشان يبقى قصاد البوكس الأولاني بالظبط */
+    top: 5%; 
+    left: 2vw; 
+    
+    font-size: 20rem; 
+    font-weight: 900;
+    line-height: 0.8;
+    z-index: 0;
+    
+    background: linear-gradient(135deg, #4f8dff, #00f3ff, #00d05a, #4f8dff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* حركة الألوان والطفو */
+    animation: liveGradientFlow 8s ease infinite, floatNumber 6s ease-in-out infinite alternate;
+    
+    filter: drop-shadow(0 0 20px rgba(79, 141, 255, 0.15));
+    
+    /* هنا التركة: خلينا الشفافية 0.3 بدل 0.85 عشان يبقى هادي ورايق */
+    opacity: 0.3; 
+    pointer-events: none;
+}
+
+/* حركة الألوان جوه الرقم */
+@keyframes liveGradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* حركة طفو خفيفة للرقم (عدلناها عشان تناسب مكانه فوق) */
+@keyframes floatNumber {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(15px); }
+}
+
+/* تظبيط الموبايل والتابلت */
+@media (max-width: 1200px) {
+    .live-gradient-number {
+        font-size: 16rem;
+        left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .live-gradient-number {
+        font-size: 12rem;
+        left: 50%;
+        top: -2%;
+        transform: translateX(-50%); 
+        animation: liveGradientFlow 8s ease infinite; 
+        opacity: 0.15; /* أشف كمان على الموبايل عشان الكلام يتقرأ براحته */
+    }
+}
+
+
+/* ================= GIANT NUMBERS COLOR VARIATIONS ================= */
+
+/* رقم 02: تدرج بنفسجي في أزرق */
+.live-gradient-number.color-2 {
+    background: linear-gradient(135deg, #a855f7, #4f8dff, #00f3ff, #a855f7);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.15));
+}
+
+/* رقم 03: تدرج أخضر نيون في سماوي */
+.live-gradient-number.color-3 {
+    background: linear-gradient(135deg, #00f3ff, #00d05a, #4f8dff, #00f3ff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(0, 208, 90, 0.15));
+}
+
+/* رقم 04: تدرج أزرق غامق في سيان */
+.live-gradient-number.color-4 {
+    background: linear-gradient(135deg, #4f8dff, #00f3ff, #a855f7, #4f8dff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(79, 141, 255, 0.15));
+}
+
+
+/* ================= SERVICES PAGE: NEW LAYOUTS ================= */
+
+/* شبكة كروت الـ 2x2 للسكيب تريسينج والريسرش */
+.features-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* كارت الـ Skip Tracing اللي بينور من الجناب */
+.glow-border-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(145deg, rgba(20, 25, 35, 0.6), rgba(10, 15, 25, 0.8));
+    transition: all 0.3s ease;
+    border-radius: 16px;
+}
+.glow-border-card:hover {
+    border-color: rgba(0, 208, 90, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 208, 90, 0.1);
+    transform: translateY(-5px);
+}
+.glow-border-card h4 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+.glow-border-card p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
+
+/* سكشن الـ Acquisitions (مقسوم نصين) */
+.acq-disp-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+.split-col {
+    border-radius: 20px;
+    border: 1px solid rgba(79, 141, 255, 0.3); /* العمود الأول أزرق */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.4));
+}
+
+/* ليستة مميزات فخمة */
+.premium-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.premium-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    color: #a0aab8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.premium-list li strong { color: #fff; }
+.premium-list .icon { font-size: 1.5rem; line-height: 1; }
+
+/* هوامش مساعدة */
+.p-25 { padding: 25px; }
+.p-40 { padding: 40px; }
+.p-50 { padding: 50px; }
+.mt-40 { margin-top: 40px; }
+.pt-40 { padding-top: 40px; }
+
+/* تظبيط الموبايل */
+@media (max-width: 992px) {
+    .acq-disp-split { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    .features-grid-2x2 { grid-template-columns: 1fr; }
+    .p-40, .p-50 { padding: 30px; }
+}
+
+
+
+/* ================= PREMIUM IMAGE WRAPPER ================= */
+.premium-image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    padding: 8px; /* الإطار الزجاجي الخفيف حوالين الصورة */
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.4));
+    border: 1px solid rgba(0, 208, 90, 0.2); /* بوردر أخضر خفيف لايق على رقم 03 */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-image-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 208, 90, 0.15);
+}
+
+.premium-image-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+/* الإضاءة اللي ضاربة من ورا الصورة */
+.image-glow-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    filter: blur(30px);
+    opacity: 0.5;
+}
+
+/* بنربط الإضاءة بألوان الأرقام اللي عملناها قبل كده */
+.image-glow-bg.color-3 { background: radial-gradient(circle, #00d05a 0%, transparent 70%); }
+.image-glow-bg.color-4 { background: radial-gradient(circle, #4f8dff 0%, transparent 70%); }
+.image-glow-bg.color-2 { background: radial-gradient(circle, #a855f7 0%, transparent 70%); }
+
+/* ================= MAIN SERVICE GRID (LEFT TEXT / RIGHT FEATURES) ================= */
+.service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* السحر هنا: بيقسم السكشن نصين متساويين */
+    gap: 50px;
+    align-items: center; /* بيخلي الكلام متسنتر بالطول مع الكروت */
+}
+
+/* تظبيط البادينج بتاع العمود الشمال */
+.service-text.pr-50 {
+    padding-right: 50px;
+}
+
+/* للموبايل والتابلت: بنخليهم يرجعوا تحت بعض بشياكة */
+@media (max-width: 992px) {
+    .service-grid {
+        grid-template-columns: 1fr; /* عمود واحد */
+        gap: 40px;
+    }
+    .service-text.pr-50 {
+        padding-right: 0; /* بنلغي المسافة على الموبايل */
+    }
+}
