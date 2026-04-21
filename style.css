@@ -3769,24 +3769,51 @@ textarea:focus-visible {
 
 
 
-/* ================= PREMIUM IMAGE WRAPPER ================= */
+/* ================= SERVICES PAGE MASTER LAYOUTS ================= */
+
+/* 1. التقسيمة النصين لسكشن 03 (يمين وشمال) */
+.service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+.service-text.pr-50 { padding-right: 50px; }
+
+/* 2. شبكة الكروت (2x2) لسكشن 03 و 05 */
+.features-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* 3. التقسيمة النصين لسكشن 04 (Acquisitions) */
+.acq-disp-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+.split-col {
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.4));
+}
+
+/* 4. إطار الصور الفخم (Premium Image) */
 .premium-image-wrapper {
     position: relative;
     width: 100%;
     border-radius: 20px;
-    padding: 8px; /* الإطار الزجاجي الخفيف حوالين الصورة */
+    padding: 8px;
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.4));
-    border: 1px solid rgba(0, 208, 90, 0.2); /* بوردر أخضر خفيف لايق على رقم 03 */
+    border: 1px solid rgba(0, 208, 90, 0.2);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .premium-image-wrapper:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0, 208, 90, 0.15);
 }
-
 .premium-image-wrapper img {
     width: 100%;
     height: auto;
@@ -3796,7 +3823,7 @@ textarea:focus-visible {
     z-index: 2;
 }
 
-/* الإضاءة اللي ضاربة من ورا الصورة */
+/* 5. الإضاءة اللي ضاربة من ورا الصورة */
 .image-glow-bg {
     position: absolute;
     top: 50%;
@@ -3808,32 +3835,145 @@ textarea:focus-visible {
     filter: blur(30px);
     opacity: 0.5;
 }
-
-/* بنربط الإضاءة بألوان الأرقام اللي عملناها قبل كده */
 .image-glow-bg.color-3 { background: radial-gradient(circle, #00d05a 0%, transparent 70%); }
 .image-glow-bg.color-4 { background: radial-gradient(circle, #4f8dff 0%, transparent 70%); }
 .image-glow-bg.color-2 { background: radial-gradient(circle, #a855f7 0%, transparent 70%); }
 
-/* ================= MAIN SERVICE GRID (LEFT TEXT / RIGHT FEATURES) ================= */
-.service-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* السحر هنا: بيقسم السكشن نصين متساويين */
-    gap: 50px;
-    align-items: center; /* بيخلي الكلام متسنتر بالطول مع الكروت */
+/* 6. كروت بتنور من الجناب (Skip Tracing) */
+.glow-border-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(145deg, rgba(20, 25, 35, 0.6), rgba(10, 15, 25, 0.8));
+    transition: all 0.3s ease;
+    border-radius: 16px;
 }
-
-/* تظبيط البادينج بتاع العمود الشمال */
-.service-text.pr-50 {
-    padding-right: 50px;
+.glow-border-card:hover {
+    border-color: rgba(0, 208, 90, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 208, 90, 0.1);
+    transform: translateY(-5px);
 }
+.glow-border-card h4 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
+.glow-border-card p { color: #94a3b8; font-size: 0.85rem; margin: 0; }
 
-/* للموبايل والتابلت: بنخليهم يرجعوا تحت بعض بشياكة */
+/* ================= الموبايل والتابلت (مهم جداً للتقسيمات) ================= */
 @media (max-width: 992px) {
-    .service-grid {
-        grid-template-columns: 1fr; /* عمود واحد */
-        gap: 40px;
+    .service-grid, .acq-disp-split { grid-template-columns: 1fr; gap: 40px; }
+    .service-text.pr-50 { padding-right: 0; }
+}
+@media (max-width: 768px) {
+    .features-grid-2x2 { grid-template-columns: 1fr; }
+}
+
+
+
+/* ================= ULTIMATE GLOBAL SPOTLIGHT (PERFORMANCE OPTIMIZED) ================= */
+
+/* 1. الكشاف العملاق اللي هينور الموقع كله من ورا */
+.global-spotlight {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh;
+    z-index: -9999; /* ورا كل حاجة في الصفحة */
+    pointer-events: none;
+    background-color: #0a0f16; /* لون كحلي فاتح جداً يكسر سواد الثيم */
+    
+    /* بقعة إضاءة خضراء عملاقة + بقعة زرقاء */
+    background-image: 
+        radial-gradient(circle at 15% 30%, rgba(0, 208, 90, 0.15) 0%, transparent 65%),
+        radial-gradient(circle at 85% 70%, rgba(79, 141, 255, 0.1) 0%, transparent 65%);
+        
+    /* ================= السحر بتاع الأداء هنا ================= */
+    transform: translateZ(0); /* بيجبر كارت الشاشة (GPU) إنه يعالجها كطبقة 3D منفصلة */
+    will-change: transform; /* بيقول للمتصفح: جهز نفسك الطبقة دي مش هتتغير مع السكرول */
+    contain: strict; /* بيعزل العنصر ده تماماً عشان ميعملش ريندر مع باقي الصفحة */
+}
+
+/* 2. إجبار كل السكاشن إنها تبقى شفافة عشان النور يضرب منها */
+body, html, main, section, .content-section, .section-alt, #content {
+    background-color: transparent !important;
+    background-image: none !important; /* بنلغي أي صورة سادة كئيبة */
+}
+
+/* 3. الحفاظ على لون الكروت الزجاجية (Glass Effect) وتفتيحها سنة */
+.glass-effect, .premium-card, .glow-border-card {
+    background-color: transparent !important;
+    background-image: linear-gradient(145deg, rgba(35, 45, 60, 0.6), rgba(15, 20, 30, 0.8)) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 4. تفتيح الكلام نفسه عشان يبان واضح ومريح */
+.sp-text, p {
+    color: #b0bbc9 !important; 
+}
+
+/* ================= تخفيف الأحمال على الموبايل (Mobile Optimization) ================= */
+@media (max-width: 768px) {
+    .global-spotlight {
+        /* على الموبايل الشاشة صغيرة، نقطة واحدة في النص كفاية جداً وأخف 50% على الجهاز */
+        background-image: radial-gradient(circle at 50% 30%, rgba(0, 208, 90, 0.12) 0%, transparent 80%);
     }
-    .service-text.pr-50 {
-        padding-right: 0; /* بنلغي المسافة على الموبايل */
+
+    /* بنقلل الظلال التقيلة سنة بسيطة جداً في الموبايل عشان نوفر فريمات (FPS) */
+    .glass-effect, .premium-card, .glow-border-card {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
+    }
+}
+
+
+/* ================= 3D FOLDED PAPER CUTS (تأثير الورقة المتنية) ================= */
+
+/* 1. إعدام اللون الأسود القديم من كل الفواصل */
+.service-divider-cut::before, .service-divider-cut::after,
+.angled-cut::before, .angled-cut::after {
+    background-color: transparent !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* 2. تظبيط السكاشن عشان تركب على بعض سنة (Overlap) */
+.service-divider-cut, .angled-cut {
+    position: relative;
+    /* بنسحب السكشن لفوق شوية عشان يركب على اللي قبله */
+    margin-top: -40px; 
+    padding-top: 80px; 
+    z-index: 2;
+    background: transparent !important;
+}
+
+/* 3. تأثير الورقة المتنية (اللمعة والضل) - إصلاح البكسلة وتنعيم الحواف */
+.service-divider-cut::before, .angled-cut::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px; 
+    
+    /* تريكات القضاء على البكسلة (Hardware Acceleration):
+      1. translateZ(0): بتجبر كارت الشاشة إنه يعالج العنصر فبينعمه.
+      2. backface-visibility: بتمنع تقطيع الحواف.
+      3. outline: حيلة سحرية بتخلي المتصفح يسيح الحرف المشرشر.
+    */
+    transform: skewY(-2deg) translateZ(0);
+    transform-origin: top left;
+    backface-visibility: hidden;
+    outline: 1px solid transparent; 
+    
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%) !important;
+    
+    /* ضفنا 0 0 1px transparent عشان نسيّح أي بكسلة في الضل نفسه */
+    box-shadow: 0 0 1px transparent, 0 -15px 30px rgba(0, 0, 0, 0.4) !important;
+    
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* تظبيط زاوية الورقة في الموبايل (لازم نحط فيها الـ translateZ برضه) */
+@media (max-width: 768px) {
+    .service-divider-cut::before, .angled-cut::before {
+        transform: skewY(-3deg) translateZ(0);
     }
 }
