@@ -470,50 +470,116 @@
             </div>
         </section>
 
-        <section id="audio-proof" class="content-section audio-proof-section reveal-section angled-cut">
+        <section id="audio-proof" class="content-section audio-proof-section reveal-section relative overflow-hidden angled-cut">
             <div class="noise-bg"></div>
-            <div class="container">
-                <div class="funnel-head reveal-item">
+            
+            <div class="bg-giant-shape neon-headset">
+                <model-viewer 
+                    src="models/headset.glb" 
+                    auto-rotate 
+                    rotation-per-second="10deg"
+                    camera-orbit="0deg 90deg 100%"
+                    disable-zoom 
+                    disable-pan
+                    shadow-intensity="0"
+                    exposure="0.8"
+                    style="width: 100%; height: 100%;">
+                </model-viewer>
+            </div>
+
+            <div class="container relative" style="z-index: 2;">
+                <div class="funnel-head reveal-item text-center">
                     <p class="sp-kicker">AUDIO PROOF</p>
-                    <h2 class="sp-title">The difference between a "no" and a signed contract</h2>
-                    <p class="sp-text">The quality of the first conversation is everything. Don't settle for robotic scripts-listen to how real agents turn cold outreach into warm opportunities.</p>
-                    <div class="audio-pills">
-                        <span class="about-pill">Live QA reviewed</span>
-                        <span class="about-pill">AI transcripts</span>
-                        <span class="about-pill">Seller consent secured</span>
-                    </div>
+                    <h2 class="sp-title mx-auto">The difference between a "no" and a signed contract</h2>
+                    <p class="sp-text mx-auto" style="max-width: 700px;">The quality of the first conversation is everything. Listen to how real agents turn cold outreach into warm opportunities.</p>
                 </div>
 
                 <article class="audio-feature-card glass-effect reveal-item">
-                    <p class="audio-label">Live Call Example 1</p>
-                    <h3>"How we uncover timing & motivation in under 2 minutes"</h3>
-                    <p class="audio-agent">Mark • Real Estate Cold Caller</p>
-                    <div class="audio-target">Target seller: Single-family landlord • Tampa, FL <span>Warm lead</span></div>
-                    <div class="audio-bar">
-                        <div class="audio-play"></div>
-                        <div class="audio-wave"></div>
+                    <div class="caller-profile-header">
+                        <div class="caller-profile">
+                            <div class="caller-avatar">
+                                <img src="https://i.pravatar.cc/150?img=11" alt="Mark">
+                                <div class="online-dot"></div>
+                            </div>
+                            <div class="caller-info">
+                                <h4>Mark</h4>
+                                <span>Real Estate Cold Caller</span>
+                            </div>
+                        </div>
+                        <p class="audio-label" style="color: #00d05a; margin: 0;">LIVE CALL EXAMPLE 1</p>
                     </div>
+
+                    <h3 style="margin-top: 15px; font-size: 1.4rem;">"How we uncover timing & motivation in under 2 minutes"</h3>
+                    
+                    <div class="pro-audio-player mt-20 mb-20" data-src="audio/record1.mp3">
+                        <audio src="audio/record1.mp3" preload="metadata"></audio>
+                        <button class="play-pause-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <span class="time-display">0:00 / 4:39</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <button class="volume-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+                        </button>
+                    </div>
+                    
                     <div class="audio-tags">
-                        <span>Discovery</span><span>Rapport</span><span>Real Estate</span>
+                        <span class="tag-outline">Discovery</span>
+                        <span class="tag-outline">Rapport</span>
+                        <span class="tag-outline">Real Estate</span>
                     </div>
-                    <p class="audio-desc">Mark demonstrates professional cold calling techniques with real estate prospects, building rapport and identifying opportunities.</p>
+                    <p class="audio-desc mt-15" style="color: #94a3b8; font-size: 0.95rem;">Mark demonstrates professional cold calling techniques with real estate prospects, building rapport and identifying opportunities.</p>
                 </article>
 
                 <div class="audio-mini-grid">
                     <article class="audio-mini-card glass-effect reveal-item">
-                        <p class="audio-label">Live Call Example 2</p>
-                        <h4>Professional Outreach</h4>
-                        <p>Paul showcases effective communication strategies and objection handling in real estate cold calling scenarios.</p>
+                        <div class="caller-profile mb-15">
+                            <div class="caller-avatar"><img src="https://i.pravatar.cc/150?img=12" alt="Paul"><div class="online-dot"></div></div>
+                            <div class="caller-info"><h4>Paul</h4><span>Cold Caller</span></div>
+                        </div>
+                        <p class="audio-label mb-5" style="font-size: 0.7rem;">LIVE CALL EXAMPLE 2</p>
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Handling "Not Interested"</h4>
+                        
+                        <div class="pro-audio-player compact-player" data-src="audio/record2.mp3">
+                            <audio src="audio/record2.mp3" preload="metadata"></audio>
+                            <button class="play-pause-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+                            <span class="time-display">0:00 / 3:48</span>
+                            <div class="progress-bar"><div class="progress-fill"></div></div>
+                        </div>
                     </article>
-                    <article class="audio-mini-card glass-effect reveal-item">
-                        <p class="audio-label">Live Call Example 3</p>
-                        <h4>Cold Calling Excellence</h4>
-                        <p>Lily demonstrates expert-level cold calling skills, creating urgency and building trust with potential clients.</p>
+                    
+                    <article class="audio-mini-card glass-effect reveal-item" style="transition-delay: 0.1s;">
+                        <div class="caller-profile mb-15">
+                            <div class="caller-avatar"><img src="https://i.pravatar.cc/150?img=5" alt="Lily"><div class="online-dot"></div></div>
+                            <div class="caller-info"><h4>Lily</h4><span>Cold Caller</span></div>
+                        </div>
+                        <p class="audio-label mb-5" style="font-size: 0.7rem;">LIVE CALL EXAMPLE 3</p>
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Gatekeeper Bypass</h4>
+                        
+                        <div class="pro-audio-player compact-player" data-src="audio/record3.mp3">
+                            <audio src="audio/record3.mp3" preload="metadata"></audio>
+                            <button class="play-pause-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+                            <span class="time-display">0:00 / 2:45</span>
+                            <div class="progress-bar"><div class="progress-fill"></div></div>
+                        </div>
                     </article>
-                    <article class="audio-mini-card glass-effect reveal-item">
-                        <p class="audio-label">Live Call Example 4</p>
-                        <h4>Advanced Cold Calling</h4>
-                        <p>Thomas shows how to handle complex conversations, address concerns, and move prospects toward commitment.</p>
+
+                    <article class="audio-mini-card glass-effect reveal-item" style="transition-delay: 0.2s;">
+                        <div class="caller-profile mb-15">
+                            <div class="caller-avatar"><img src="https://i.pravatar.cc/150?img=15" alt="Thomas"><div class="online-dot"></div></div>
+                            <div class="caller-info"><h4>Thomas</h4><span>Cold Caller</span></div>
+                        </div>
+                        <p class="audio-label mb-5" style="font-size: 0.7rem;">LIVE CALL EXAMPLE 4</p>
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Advanced Deal Closing</h4>
+                        
+                        <div class="pro-audio-player compact-player" data-src="audio/record4.mp3">
+                            <audio src="audio/record4.mp3" preload="metadata"></audio>
+                            <button class="play-pause-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+                            <span class="time-display">0:00 / 5:12</span>
+                            <div class="progress-bar"><div class="progress-fill"></div></div>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -786,6 +852,7 @@
     <a href="#contact" class="mobile-sticky-cta btn-primary btn-black-text">Book Strategy Call</a>
 
     <script src="script.js" defer></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </body>
 </html>
 

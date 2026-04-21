@@ -3415,3 +3415,208 @@ textarea:focus-visible {
         white-space: normal; /* بنسمحله يتكسر على الموبايل بس لو الشاشة صغيرة أوي */
     }
 }
+
+
+
+/* ================= 3D REAL HEADSET ANIMATION ================= */
+/* ================= 3D NEON HEADSET ANIMATION ================= */
+.neon-headset {
+    position: absolute;
+    width: 800px; /* كبرناها زي ما طلبت */
+    height: 800px;
+    top: 50%;
+    left: -250px;
+    transform: translateY(-50%) rotate(-15deg);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0; /* مخفية في الأول لحد ما العميل يوصلها */
+    transition: opacity 0.5s ease;
+}
+
+/* الكلاس ده بيتحط بالجافاسكريبت أول ما السكشن يظهر */
+.neon-headset.animate-in {
+    opacity: 1;
+    /* الأنيميشن الدخول: بتنزل من فوق وتلف وتاخد حجمها وتستقر */
+    animation: headsetEnter 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards, 
+               headsetFloat 8s ease-in-out 1.5s infinite alternate; /* بترجع تـ Float بعد ما تستقر */
+}
+
+.neon-headset svg {
+    width: 100%;
+    height: 100%;
+    stroke: #00d05a;
+}
+.neon-path-1 { stroke-width: 1.5; animation: glowPulse 4s infinite alternate ease-in-out; }
+.neon-path-2 { stroke-width: 0.8; opacity: 0.5; animation: glowPulse 5s infinite alternate-reverse ease-in-out; }
+.neon-path-3 { stroke-width: 1.2; animation: glowPulse 3.5s infinite alternate ease-in-out; }
+.neon-path-4 { stroke-width: 0.5; opacity: 0.3; }
+.neon-path-5 { stroke-width: 2; animation: glowPulse 6s infinite alternate ease-in-out; }
+
+@keyframes glowPulse {
+    0% { filter: drop-shadow(0 0 5px rgba(0,208,90,0.1)); }
+    100% { filter: drop-shadow(0 0 35px rgba(0,208,90,0.6)); } /* زودنا الـ Glow شوية عشان الحجم كبر */
+}
+
+/* حركة الدخول الأسطورية (من كبير وبعيد، لمكانها الطبيعي) */
+@keyframes headsetEnter {
+    0% { 
+        transform: translateY(-100%) rotate(45deg) scale(1.5); 
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-30%) rotate(-25deg) scale(1.1);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(-50%) rotate(-15deg) scale(1); 
+        opacity: 1;
+    }
+}
+
+/* حركة التنفس العادية (Float) بعد ما تستقر */
+@keyframes headsetFloat {
+    0% { transform: translateY(-50%) rotate(-15deg) scale(1); }
+    100% { transform: translateY(-48%) rotate(-10deg) scale(1.03); }
+}
+
+/* تظبيط الموبايل */
+@media (max-width: 768px) {
+    .neon-headset {
+        width: 400px;
+        height: 400px;
+        left: -100px;
+        top: 20%;
+    }
+}
+
+/* ================= CUSTOM PRO AUDIO PLAYER (MATCHING SCREENSHOT) ================= */
+.pro-audio-player {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #111418; /* اللون الداكن الفخم */
+    border-radius: 50px;
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.pro-audio-player.compact-player {
+    padding: 10px 15px;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.pro-audio-player audio { display: none; /* إخفاء المشغل العادي تماماً */ }
+
+.play-pause-btn {
+    background: none;
+    border: none;
+    color: #c4b087; /* اللون الدهبي/الرملي اللي في الصورة */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+.play-pause-btn svg { width: 22px; height: 22px; }
+.play-pause-btn:hover { transform: scale(1.1); color: #e6d3a8; }
+
+.time-display {
+    color: #a0aab8;
+    font-size: 0.85rem;
+    font-family: monospace;
+    white-space: nowrap;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%; /* الجافاسكريبت هيحرك دي */
+    background: #c4b087; /* لون الشريط الدهبي */
+    border-radius: 10px;
+    transition: width 0.1s linear;
+}
+
+.volume-btn {
+    background: none;
+    border: none;
+    color: #8893a3;
+    cursor: pointer;
+}
+.volume-btn svg { width: 18px; height: 18px; }
+
+
+
+/* ================= FIX AVATAR SIZES (SMALL & CIRCULAR) ================= */
+
+.caller-profile-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+}
+
+.caller-profile { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    margin-bottom: 15px;
+}
+
+.caller-avatar { 
+    position: relative; 
+    width: 45px !important; /* إجبار الحجم الصغير */
+    height: 45px !important; 
+    border-radius: 50% !important; 
+    flex-shrink: 0; /* عشان الصورة متتمطش */
+}
+
+.caller-avatar img { 
+    width: 100% !important; 
+    height: 100% !important; 
+    border-radius: 50% !important; /* شكل دائري */
+    object-fit: cover !important; 
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    display: block;
+}
+
+.online-dot { 
+    position: absolute; 
+    bottom: 0px; 
+    right: 0px; 
+    width: 12px !important; 
+    height: 12px !important; 
+    background: #00d05a; 
+    border: 2px solid #0a0e14; 
+    border-radius: 50%; 
+    box-shadow: 0 0 8px rgba(0, 208, 90, 0.6); 
+    z-index: 2;
+}
+
+.caller-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.caller-info h4 { 
+    font-size: 1rem !important; 
+    margin: 0 0 2px 0 !important; 
+    color: #fff; 
+    font-weight: 700; 
+}
+
+.caller-info span { 
+    font-size: 0.75rem !important; 
+    color: #94a3b8; 
+}

@@ -127,3 +127,87 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(resultsSection);
     }
 });
+
+
+/* ================= CUSTOM AUDIO PLAYER LOGIC ================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const players = document.querySelectorAll('.pro-audio-player');
+
+    players.forEach(player => {
+        const audio = player.querySelector('audio');
+        const playBtn = player.querySelector('.play-pause-btn');
+        const progressFill = player.querySelector('.progress-fill');
+        const progressBar = player.querySelector('.progress-bar');
+        const timeDisplay = player.querySelector('.time-display');
+
+        // Play / Pause Toggle
+        playBtn.addEventListener('click', () => {
+            // Stop other players first
+            players.forEach(p => {
+                if (p !== player) p.querySelector('audio').pause();
+            });
+
+            if (audio.paused) {
+                audio.play();
+                // تغيير الأيقونة لـ Pause
+                playBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+            } else {
+                audio.pause();
+                // تغيير الأيقونة لـ Play
+                playBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+            }
+        });
+
+        // Update Progress Bar & Time
+        audio.addEventListener('timeupdate', () => {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = `${percent}%`;
+
+            let currentMins = Math.floor(audio.currentTime / 60);
+            let currentSecs = Math.floor(audio.currentTime % 60);
+            if (currentSecs < 10) currentSecs = `0${currentSecs}`;
+            
+            // Assuming total time is set in HTML, just updating current time
+            let totalTimeText = timeDisplay.innerText.split(' / ')[1];
+            timeDisplay.innerText = `${currentMins}:${currentSecs} / ${totalTimeText}`;
+        });
+
+        // Click to Seek
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            audio.currentTime = (clickX / width) * audio.duration;
+        });
+
+        // Reset on end
+        audio.addEventListener('ended', () => {
+            playBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+            progressFill.style.width = '0%';
+        });
+    });
+});
+
+
+/* ================= HEADSET SCROLL ANIMATION ================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const headset = document.querySelector('.neon-headset');
+    const audioSection = document.querySelector('#audio-proof');
+
+    if (headset && audioSection) {
+        // بنعمل مراقب (Observer) يشوف العميل وصل للسكشن ولا لسه
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // أول ما 30% من السكشن يظهر في الشاشة
+                if (entry.isIntersecting) {
+                    headset.classList.add('animate-in'); // ضيف كلاس الدخول
+                    observer.unobserve(entry.target); // وقف المراقبة عشان متتعملش كل شوية
+                }
+            });
+        }, {
+            threshold: 0.3 // يشتغل لما 30% من السكشن يبان
+        });
+
+        observer.observe(audioSection);
+    }
+});
