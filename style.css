@@ -3418,75 +3418,63 @@ textarea:focus-visible {
 
 
 
-/* ================= 3D REAL HEADSET ANIMATION ================= */
-/* ================= 3D NEON HEADSET ANIMATION ================= */
+/* ================= 3D HEADSET SCROLL PARALLAX ================= */
 .neon-headset {
     position: absolute;
-    width: 800px; /* كبرناها زي ما طلبت */
-    height: 800px;
-    top: 50%;
-    left: -250px;
-    transform: translateY(-50%) rotate(-15deg);
+    width: 700px;
+    height: 700px;
+    top: 0;
+    left: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0; /* مخفية في الأول لحد ما العميل يوصلها */
-    transition: opacity 0.5s ease;
+    will-change: transform; /* بنقول للمتصفح يجهز نفسه لحركة سريعة مع الـ Scroll */
+    /* البداية مخفية في الشمال لحد ما السكريبت يشتغل */
+    transform: translate(-50vw, -100px) rotate(-20deg); 
 }
 
-/* الكلاس ده بيتحط بالجافاسكريبت أول ما السكشن يظهر */
-.neon-headset.animate-in {
-    opacity: 1;
-    /* الأنيميشن الدخول: بتنزل من فوق وتلف وتاخد حجمها وتستقر */
-    animation: headsetEnter 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards, 
-               headsetFloat 8s ease-in-out 1.5s infinite alternate; /* بترجع تـ Float بعد ما تستقر */
-}
-
-.neon-headset svg {
+/* حركة التنفس المستمرة للسماعة بغض النظر عن السكرول */
+.neon-headset model-viewer {
     width: 100%;
     height: 100%;
-    stroke: #00d05a;
-}
-.neon-path-1 { stroke-width: 1.5; animation: glowPulse 4s infinite alternate ease-in-out; }
-.neon-path-2 { stroke-width: 0.8; opacity: 0.5; animation: glowPulse 5s infinite alternate-reverse ease-in-out; }
-.neon-path-3 { stroke-width: 1.2; animation: glowPulse 3.5s infinite alternate ease-in-out; }
-.neon-path-4 { stroke-width: 0.5; opacity: 0.3; }
-.neon-path-5 { stroke-width: 2; animation: glowPulse 6s infinite alternate ease-in-out; }
-
-@keyframes glowPulse {
-    0% { filter: drop-shadow(0 0 5px rgba(0,208,90,0.1)); }
-    100% { filter: drop-shadow(0 0 35px rgba(0,208,90,0.6)); } /* زودنا الـ Glow شوية عشان الحجم كبر */
+    filter: drop-shadow(0 0 35px rgba(0, 208, 90, 0.4)) contrast(1.2);
+    opacity: 0.85;
+    animation: headsetBreathe 6s ease-in-out infinite alternate;
 }
 
-/* حركة الدخول الأسطورية (من كبير وبعيد، لمكانها الطبيعي) */
-@keyframes headsetEnter {
-    0% { 
-        transform: translateY(-100%) rotate(45deg) scale(1.5); 
-        opacity: 0;
-    }
-    50% {
-        transform: translateY(-30%) rotate(-25deg) scale(1.1);
-        opacity: 1;
-    }
-    100% { 
-        transform: translateY(-50%) rotate(-15deg) scale(1); 
-        opacity: 1;
-    }
+@keyframes headsetBreathe {
+    0% { transform: translateY(-15px) scale(0.98); }
+    100% { transform: translateY(15px) scale(1.02); }
 }
 
-/* حركة التنفس العادية (Float) بعد ما تستقر */
-@keyframes headsetFloat {
-    0% { transform: translateY(-50%) rotate(-15deg) scale(1); }
-    100% { transform: translateY(-48%) rotate(-10deg) scale(1.03); }
-}
-
-/* تظبيط الموبايل */
 @media (max-width: 768px) {
     .neon-headset {
-        width: 400px;
-        height: 400px;
-        left: -100px;
-        top: 20%;
+        width: 350px;
+        height: 350px;
     }
+}
+
+/* ================= PARALLAX LAYERS & Z-INDEX FIX ================= */
+
+#audio-proof {
+    position: relative;
+    z-index: 20 !important; 
+}
+
+/* بنجبر السماعة تبقى في الخلفية دايماً تحت كل الكروت */
+.neon-headset {
+    z-index: -1 !important; 
+    pointer-events: none; /* عشان الماوس ميقفش عليها */
+}
+
+#testimonials, .testimonials-section {
+    position: relative;
+    z-index: 10 !important; 
+}
+
+/* لو كروت الأوديو والتقييمات مش واخدين z-index، بنديهم عشان يبقوا فوق السماعة */
+.audio-feature-card, .audio-mini-card, .testimonial-card {
+    position: relative;
+    z-index: 5 !important;
 }
 
 /* ================= CUSTOM PRO AUDIO PLAYER (MATCHING SCREENSHOT) ================= */

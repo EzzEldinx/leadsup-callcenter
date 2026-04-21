@@ -189,25 +189,64 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/* ================= HEADSET SCROLL ANIMATION ================= */
+/* ================= HEADSET SCROLL-TRACKING ANIMATION (SMOOTH DIAGONAL GLIDE) ================= */
 document.addEventListener('DOMContentLoaded', () => {
     const headset = document.querySelector('.neon-headset');
-    const audioSection = document.querySelector('#audio-proof');
+    const audioSec = document.querySelector('#audio-proof');
+    const testSec = document.querySelector('#testimonials') || document.querySelector('.testimonials-section'); 
 
-    if (headset && audioSection) {
-        // بنعمل مراقب (Observer) يشوف العميل وصل للسكشن ولا لسه
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // أول ما 30% من السكشن يظهر في الشاشة
-                if (entry.isIntersecting) {
-                    headset.classList.add('animate-in'); // ضيف كلاس الدخول
-                    observer.unobserve(entry.target); // وقف المراقبة عشان متتعملش كل شوية
-                }
-            });
-        }, {
-            threshold: 0.3 // يشتغل لما 30% من السكشن يبان
+    if (headset && audioSec && testSec) {
+        let ticking = false;
+
+        function updateHeadsetPos() {
+            const scrollY = window.scrollY;
+            const winHeight = window.innerHeight;
+
+            // بنبدأ الحركة بدري شوية عشان تبقى سلسة
+            const startScroll = audioSec.offsetTop - (winHeight * 0.7); 
+            // بننهي الحركة في نص سكشن التقييمات
+            const endScroll = testSec.offsetTop + (testSec.offsetHeight / 2);
+            
+            const totalScroll = endScroll - startScroll;
+            
+            let progress = (scrollY - startScroll) / totalScroll;
+            progress = Math.max(0, Math.min(1, progress));
+
+            // ==========================================
+            // 1. الحركة الأفقية (X-Axis): دخلناها جوه الشاشة
+            // بتبدأ من -20vw (شمال) وتقف عند 55vw (يمين) عشان تبان كلها متتقطعش
+            // ==========================================
+            const xPos = -20 + (progress * 75); 
+
+            // ==========================================
+            // 2. الحركة الرأسية (Y-Axis): نزول انسيابي مريح
+            // شيلنا النزلة العمودية المفاجئة، وخليناها تنزل بالتدريج مع السكرول
+            // ==========================================
+            const startY = -50; 
+            const targetY = testSec.offsetTop - audioSec.offsetTop + 100; 
+            
+            // معادلة نعومة (أس 1.5 بدل 3) عشان تنزل براحتها من غير خبطة
+            const smoothProgress = Math.pow(progress, 1.5);
+            const yPos = startY + (smoothProgress * (targetY - startY));
+
+            // ==========================================
+            // 3. الدوران (Rotation)
+            // ==========================================
+            const rot = -20 + (progress * 45); 
+
+            // تطبيق الحركة
+            headset.style.transform = `translate(${xPos}vw, ${yPos}px) rotate(${rot}deg)`;
+            
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateHeadsetPos);
+                ticking = true;
+            }
         });
-
-        observer.observe(audioSection);
+        
+        updateHeadsetPos();
     }
 });
