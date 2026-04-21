@@ -3319,3 +3319,99 @@ textarea:focus-visible {
 .service-cards-grid {
     margin-bottom: 60px !important;
 }
+
+
+/* ================= MANAGERS ADD-ON GLOW BOX ================= */
+.managers-addon-container {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 5;
+}
+
+.waves-glow-box {
+    position: relative;
+    background: #0a0e14;
+    border: 1px solid rgba(0, 208, 90, 0.3);
+    border-radius: 24px;
+    padding: 30px 45px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 208, 90, 0.1);
+}
+
+.addon-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.addon-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 208, 90, 0.1);
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    color: #00d05a;
+}
+
+.addon-icon svg { width: 32px; }
+
+.addon-text h3 { font-size: 1.4rem; margin-bottom: 5px; color: #fff; }
+.addon-text p { color: #94a3b8; font-size: 1rem; }
+.addon-text strong { color: #00d05a; }
+
+/* تأثير الـ Waves الملونة */
+.wave-layer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(0, 208, 90, 0.08) 0%, rgba(79, 141, 255, 0.05) 30%, transparent 70%);
+    animation: waveRotate 12s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.wave-layer:nth-child(2) {
+    animation-duration: 8s;
+    animation-direction: reverse;
+    opacity: 0.6;
+}
+
+@keyframes waveRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .addon-content { flex-direction: column; text-align: center; }
+    .waves-glow-box { padding: 30px 20px; }
+}
+
+
+/* ================= MANAGERS ADD-ON BUTTON FIX ================= */
+.addon-action .btn-primary {
+    white-space: nowrap; /* السطر السحري اللي بيمنع الكلام ينزل على سطرين */
+    padding: 16px 36px; /* بندي مساحة للزرار يتنفس من الجناب */
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* تظبيط الزرار على شاشات الموبايل عشان ميبوظش الدنيا */
+@media (max-width: 768px) {
+    .addon-action {
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .addon-action .btn-primary {
+        width: 100%; /* بنخلي الزرار بعرض الشاشة على الموبايل لشكل أشيك */
+        white-space: normal; /* بنسمحله يتكسر على الموبايل بس لو الشاشة صغيرة أوي */
+    }
+}

@@ -1,10 +1,31 @@
-1 - contact us fel home page w ahot feha calendry + mail 
-2 - the result ytn2l foo2
-3 -  export serveice page fel demo
-4 - 72hours azwdlha effectrs
-5- check whapp
+LeadsUp Momentum
+Experienced cold caller
+Client success manager
+Quality control management
+Weekly reports
+Weekly meeting with your team
+Choose your cold caller
+Readymode dialer IQ 
+75 local phone numbers
+Data pulling - 15k records
+Data skiptracing - 15k records
 
-6 + who we help
-7 - we dont cold calls we cash calls + nsheel al zyada fel footer
-
-
+LeadsUp Drive
+Experienced cold caller
+Client success manager
+Quality control management
+Weekly reports
+Weekly meeting with your team
+Choose your cold caller
+Readymode dialer IQ 
+75 local phone numbers
+LeadsUp Prime
+2 experienced cold callers
+Client success manager
+Quality control management
+Weekly reports
+Weekly meeting with your team
+Choose your cold caller
+Readymode dialer
+Data pulling - 30k records
+Data skiptracing - 30k records
