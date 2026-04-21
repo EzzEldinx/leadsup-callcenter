@@ -3976,3 +3976,42 @@ body {
         transform: skewY(-3deg) translateZ(0);
     }
 }
+
+/* ================= تنظيف الفوتر نهائياً من النغمشة (FOOTER NOISE KILLER) ================= */
+
+/* 1. استهداف الفوتر وكل الحاويات الأساسية اللي جواه */
+footer, 
+#footer, 
+.site-footer, 
+.footer, 
+.footer-area, 
+.footer-wrapper,
+.footer-inner {
+    background-image: none !important;
+    /* بنجبر الفوتر ياخد لون كحلي غامق ونظيف سادة بدل كود الـ background المجمع بتاع القالب */
+    background: #0a0f16 !important; 
+}
+
+/* 2. إعدام أي طبقة وهمية (Before/After) القالب راميها فوق الفوتر عشان تعمل نغمشة */
+footer::before, 
+footer::after,
+.site-footer::before, 
+.site-footer::after,
+.footer::before, 
+.footer::after {
+    background-image: none !important;
+    background: none !important;
+    opacity: 0 !important;
+    display: none !important;
+}
+
+/* 3. استهداف ذكي: لو القالب عامل Div مخصوص للنغمشة جوه الفوتر (أي كلاس فيه كلمة noise أو grain) */
+footer div[class*="noise"], 
+footer div[class*="grain"], 
+footer div[class*="texture"],
+.site-footer div[class*="noise"],
+.site-footer div[class*="grain"] {
+    display: none !important;
+    opacity: 0 !important;
+    background-image: none !important;
+}
