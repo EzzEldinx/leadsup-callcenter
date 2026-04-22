@@ -4095,4 +4095,56 @@ footer div[class*="texture"],
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         background: #0a0e14 !important; /* لون سادة مريح للعين والرامات */
     }
+
+    /* ================= 🚨 MOBILE MENU VISIBILITY FIX 🚨 ================= */
+
+@media (max-width: 768px) {
+    /* 1. السطر ده هو اللي هيحرر الهيدر ويمنعه يقص المنيو وهو نازل */
+    header, .navbar {
+        overflow: visible !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+    }
+
+    /* 2. تكبير مساحة الضغط لزرار الهامبرجر عشان يلقط اللمس بسرعة */
+    .mobile-menu-btn {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        z-index: 1001; /* نأمن إنه فوق أي حاجة */
+    }
+
+    /* 3. تظبيط شكل المنيو لما يفتح عشان ميتوهش ورا السكاشن */
+    .nav-links.nav-links--open {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: calc(100% + 15px); /* ينزل تحت الناف بار بمسافة شيك */
+        left: 0;
+        width: 100%;
+        background: rgba(8, 12, 18, 0.98); /* دارك مود فخم جداً */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 30px 20px;
+        border: 1px solid rgba(0, 208, 90, 0.15); /* إطار أخضر خفيف */
+        border-radius: 22px;
+        z-index: 9999 !important; /* أعلى طبقة في الموقع */
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        gap: 18px;
+    }
+
+    /* 4. تكبير اللينكات جوه الموبايل عشان تبقى Touch-friendly */
+    .nav-links.nav-links--open a {
+        font-size: 1.1rem;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+    }
+ }
+
 }
