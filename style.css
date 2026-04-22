@@ -4081,3 +4081,51 @@ footer div[class*="texture"],
         background: #0a0e14 !important; /* لون سادة مريح للعين والرامات */
     }
 }
+
+/* ================= 🚨 ULTIMATE MOBILE CRASH FIX (SAFE MODE) 🚨 ================= */
+
+@media (max-width: 768px) {
+    /* 1. إيقاف محرك الـ 3D (WebGL) في الموبايل تماماً */
+    .neon-headset, 
+    model-viewer {
+        display: none !important;
+        opacity: 0 !important;
+        animation: none !important;
+        content-visibility: hidden !important; 
+        /* ده هيخلي الموبايل ميديش أي رامات للسماعة نهائياً */
+    }
+
+    /* 2. إيقاف النغمشة (Fractal Noise) لأنها بتعمل ريندر مستمر */
+    .noise-bg,
+    [class*="noise"] {
+        display: none !important;
+        background-image: none !important;
+    }
+
+    /* 3. تخفيف أي ضل (Shadow) أو فلتر ضخم بيسحب من كارت الشاشة */
+    .live-gradient-number,
+    .bg-giant-number,
+    .bg-giant-shape,
+    .logo-glow {
+        filter: none !important; /* مسحنا הـ drop-shadow اللي بيستهلك VRAM */
+        -webkit-filter: none !important;
+        /* لو رقم أو شكل عملاق هنسيبه، بس من غير أنيميشن أو فلاتر تقيلة */
+        animation: none !important;
+    }
+
+    /* 4. تنظيف الكاليندلي والفورم (تأكيد الحماية) */
+    .calendly-inline-widget,
+    .calendly-inline-widget iframe,
+    .calendly-inline-widget-wrapper {
+        filter: none !important;
+        -webkit-filter: none !important;
+        transform: translateZ(0) !important; 
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    /* 5. تسريع السكرول (Hardware Acceleration) لكل الصفحة */
+    html, body {
+        -webkit-overflow-scrolling: touch !important; 
+    }
+}
