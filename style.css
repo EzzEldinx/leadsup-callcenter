@@ -3069,16 +3069,21 @@ textarea:focus-visible {
 }
 
 
-/* ================= CALENDLY FREE TIER DARK MODE HACK ================= */
+/* ================= CALENDLY (ULTRA FAST & CLEAN) ================= */
+
+/* تظبيط الحواف بس من غير أي فلاتر عشان الأداء يبقى 100% */
 .calendly-inline-widget iframe {
-    /* الفلتر ده بيعكس اللون الأبيض لأسود، وبيرجع درجات الأزرق والأخضر لأصلها تقريباً */
-    filter: invert(0.92) hue-rotate(180deg) brightness(1.05) contrast(0.95);
     border-radius: 16px !important;
+    background-color: transparent !important;
 }
 
-/* تظبيط لون الخلفية ورا الكاليندلي عشان ميبانش أي حواف بيضا */
+/* تظبيط الحاوية اللي شايلة الكاليندلي */
 .calendly-inline-widget-wrapper {
     background-color: #0a0e14;
+    border-radius: 16px;
+    overflow: hidden;
+    /* السطر ده بيعزل الكاليندلي في طبقة لوحده عشان السكرول يفضل ناعم وميهنجش الصفحة */
+    transform: translateZ(0); 
 }
 
 
@@ -4045,4 +4050,34 @@ footer div[class*="texture"],
     opacity: 0 !important;
     pointer-events: none !important;
     z-index: -999 !important;
+}
+
+/* ================= 🚨 CONTACT SECTION MOBILE CRASH FIX (OOM KILLER) 🚨 ================= */
+
+@media (max-width: 768px) {
+    /* 1. إعدام الفلاتر المعقدة من على الكاليندلي (هيرجع لونه الفاتح الأصلي على الموبايل بس الموقع مش هيقع) */
+    .calendly-inline-widget,
+    .calendly-inline-widget iframe,
+    .calendly-inline-widget-wrapper {
+        filter: none !important;
+        -webkit-filter: none !important;
+        transform: translateZ(0) !important; /* بيعزل الكاليندلي في طبقة لوحده عشان ميهنجش الصفحة */
+        box-shadow: none !important;
+        background: transparent !important;
+    }
+
+    /* 2. إعدام الظرف العملاق اللي في الخلفية (لأنه بيسحب رامات ضخمة في الريندر) */
+    .shape-envelope {
+        display: none !important;
+        opacity: 0 !important;
+        animation: none !important;
+        content-visibility: hidden !important; /* السطر ده بيشيله من حسابات المعالج تماماً */
+    }
+
+    /* 3. تخفيف أي ظلال (Box Shadows) تقيلة في سكشن الفورم */
+    .contact-form-pro {
+        box-shadow: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        background: #0a0e14 !important; /* لون سادة مريح للعين والرامات */
+    }
 }
