@@ -4148,3 +4148,38 @@ footer div[class*="texture"],
  }
 
 }
+
+
+/* ================= 🚨 100% GUARANTEED HORIZONTAL SCROLL FIX (CLIENT BUG FIX) 🚨 ================= */
+
+/* 1. القفل الحديدي على مستوى الصفحة بالكامل */
+html, body {
+    width: 100% !important;
+    max-width: 100vw !important;
+    /* خاصية clip السحرية: بتقص العرض بس ومبتعملش مشكلة الـ 2 سكرول نهائياً */
+    overflow-x: clip !important; 
+}
+
+/* 2. إجبار كل السكاشن إنها تقص أي شكل، رقم، أو كشاف بيحاول يزق الشاشة لليمين */
+main, section, footer, .content-section, .hero, .funnel-section {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: clip !important; 
+}
+
+/* 3. تحجيم الإضاءات والكشافات اللي واخدة 150vw عشان متعملش مساحة وهمية */
+.global-spotlight, 
+.top-spotlight,
+.image-glow-bg {
+    width: 100% !important;
+    max-width: 100vw !important;
+}
+
+/* 4. تأمين إضافي لشبكات الكروت على الموبايل عشان مفيش كارت يفرش بره */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100vw !important;
+        overflow-x: clip !important;
+    }
+}
+/* ====================================================================================== */
