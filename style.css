@@ -4039,4 +4039,10 @@ footer div[class*="texture"],
     background-image: none !important;
 }
 
-/*comment*/
+/* ================= REMOVE MOBILE STICKY BUTTON ================= */
+.mobile-sticky-cta {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -999 !important;
+}
