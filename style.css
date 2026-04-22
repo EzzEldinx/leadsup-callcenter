@@ -1,5 +1,3 @@
-
-
 /* ================= CSS VARIABLES ================= */
 :root {
     --bg-dark: #030304;
@@ -36,7 +34,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     width: 100%;
-    /*overflow-x: hidden; /* دي كفاية جداً تمنع السكرول بالعرض */
+    overflow-x: hidden; /* دي كفاية جداً تمنع السكرول بالعرض */
     position: relative;
     -webkit-font-smoothing: antialiased; /* بتنضف الفونتات على الموبايل */
     overscroll-behavior-y: none; /* بتمنع سحبة السوستة الرخمة دي */
@@ -1259,6 +1257,21 @@ textarea:focus-visible {
         border-radius: 15px;
         gap: 14px;
     }
+
+
+    /* السطر ده اللي هيخلي المنيو يظهر لما تدوس على الزرار */
+.nav-links.nav-links--open {
+    display: flex !important; /* إجبار الظهور */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #050507;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
 
     .hero {
         padding-top: 120px;
@@ -4081,69 +4094,5 @@ footer div[class*="texture"],
         box-shadow: none !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         background: #0a0e14 !important; /* لون سادة مريح للعين والرامات */
-    }
-}
-
-/* ================= 🚨 THE ULTIMATE MOBILE FIX (NO DOUBLE SCROLL, NO CRASH) 🚨 ================= */
-
-/* 1. إزالة سبب الـ Double Scroll (مسحنا الـ position: relative من الـ HTML) */
-html 
-    /*overflow-x: hidden !important;
-    width: 100% !important;
-    height: auto !important;
-    position: static !important; 
-}
-
-body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    position: relative;
-}
-
-/* 2. استخدام خاصية (clip) السحرية اللي بتقص العرض ومبتبوظش الطول (عشان حبال الأرقام متتقطعش) */
-section, footer, main, header {
-    max-width: 100% !important;
-    overflow-x: clip !important;
-}
-
-/* 3. منع أي عنصر واخد 100vw إنه يعمل مساحة وهمية بالسالب ويفتح سكرول يمين */
-.global-spotlight,
-.top-spotlight,
-.image-glow-bg,
-.wave-layer {
-    width: 100% !important;
-    max-width: 100% !important;
-}
-
-/* 4. إنقاذ الموبايل من الكراش (OOM Memory Fix) */
-@media (max-width: 768px) {
-    /* الفلتر على الـ iframe كان بيموت الآيفون */
-    .calendly-inline-widget iframe {
-        filter: none !important;
-        border-radius: 12px !important;
-    }
-
-    /* ❌ الجاني الحقيقي: فلتر الـ Drop-shadow على مجسم 3D كان بيعمل Memory Leak فظيع */
-    .neon-headset model-viewer {
-        filter: none !important; 
-    }
-
-    /* تخفيف الـ Blur بتاع إضاءة الخدمات عشان كارت الشاشة */
-    .image-glow-bg {
-        filter: blur(40px) !important;
-    }
-    
-    /* تحجيم الأشكال والأرقام العملاقة عشان متفرشش بره الشاشة */
-    .bg-giant-number, 
-    .shape-amp, 
-    .shape-asterisk, 
-    .shape-envelope {
-        font-size: 15rem !important;
-        opacity: 0.1 !important;
-    }
-    
-    /* تحجيم السماعة عشان متخرجش بره حدود الشاشة في الموبايل */
-    .neon-headset {
-        transform: translate(-10vw, -50px) rotate(-10deg) !important;
     }
 }
