@@ -1,3 +1,5 @@
+
+
 /* ================= CSS VARIABLES ================= */
 :root {
     --bg-dark: #030304;
@@ -34,7 +36,7 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     width: 100%;
-    overflow-x: hidden; /* دي كفاية جداً تمنع السكرول بالعرض */
+    /*overflow-x: hidden; /* دي كفاية جداً تمنع السكرول بالعرض */
     position: relative;
     -webkit-font-smoothing: antialiased; /* بتنضف الفونتات على الموبايل */
     overscroll-behavior-y: none; /* بتمنع سحبة السوستة الرخمة دي */
@@ -4082,50 +4084,66 @@ footer div[class*="texture"],
     }
 }
 
-/* ================= 🚨 ULTIMATE MOBILE CRASH FIX (SAFE MODE) 🚨 ================= */
+/* ================= 🚨 THE ULTIMATE MOBILE FIX (NO DOUBLE SCROLL, NO CRASH) 🚨 ================= */
 
+/* 1. إزالة سبب الـ Double Scroll (مسحنا الـ position: relative من الـ HTML) */
+html 
+    /*overflow-x: hidden !important;
+    width: 100% !important;
+    height: auto !important;
+    position: static !important; 
+}
+
+body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative;
+}
+
+/* 2. استخدام خاصية (clip) السحرية اللي بتقص العرض ومبتبوظش الطول (عشان حبال الأرقام متتقطعش) */
+section, footer, main, header {
+    max-width: 100% !important;
+    overflow-x: clip !important;
+}
+
+/* 3. منع أي عنصر واخد 100vw إنه يعمل مساحة وهمية بالسالب ويفتح سكرول يمين */
+.global-spotlight,
+.top-spotlight,
+.image-glow-bg,
+.wave-layer {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* 4. إنقاذ الموبايل من الكراش (OOM Memory Fix) */
 @media (max-width: 768px) {
-    /* 1. إيقاف محرك الـ 3D (WebGL) في الموبايل تماماً */
-    .neon-headset, 
-    model-viewer {
-        display: none !important;
-        opacity: 0 !important;
-        animation: none !important;
-        content-visibility: hidden !important; 
-        /* ده هيخلي الموبايل ميديش أي رامات للسماعة نهائياً */
-    }
-
-    /* 2. إيقاف النغمشة (Fractal Noise) لأنها بتعمل ريندر مستمر */
-    .noise-bg,
-    [class*="noise"] {
-        display: none !important;
-        background-image: none !important;
-    }
-
-    /* 3. تخفيف أي ضل (Shadow) أو فلتر ضخم بيسحب من كارت الشاشة */
-    .live-gradient-number,
-    .bg-giant-number,
-    .bg-giant-shape,
-    .logo-glow {
-        filter: none !important; /* مسحنا הـ drop-shadow اللي بيستهلك VRAM */
-        -webkit-filter: none !important;
-        /* لو رقم أو شكل عملاق هنسيبه، بس من غير أنيميشن أو فلاتر تقيلة */
-        animation: none !important;
-    }
-
-    /* 4. تنظيف الكاليندلي والفورم (تأكيد الحماية) */
-    .calendly-inline-widget,
-    .calendly-inline-widget iframe,
-    .calendly-inline-widget-wrapper {
+    /* الفلتر على الـ iframe كان بيموت الآيفون */
+    .calendly-inline-widget iframe {
         filter: none !important;
-        -webkit-filter: none !important;
-        transform: translateZ(0) !important; 
-        box-shadow: none !important;
-        background: transparent !important;
+        border-radius: 12px !important;
     }
 
-    /* 5. تسريع السكرول (Hardware Acceleration) لكل الصفحة */
-    html, body {
-        -webkit-overflow-scrolling: touch !important; 
+    /* ❌ الجاني الحقيقي: فلتر الـ Drop-shadow على مجسم 3D كان بيعمل Memory Leak فظيع */
+    .neon-headset model-viewer {
+        filter: none !important; 
+    }
+
+    /* تخفيف الـ Blur بتاع إضاءة الخدمات عشان كارت الشاشة */
+    .image-glow-bg {
+        filter: blur(40px) !important;
+    }
+    
+    /* تحجيم الأشكال والأرقام العملاقة عشان متفرشش بره الشاشة */
+    .bg-giant-number, 
+    .shape-amp, 
+    .shape-asterisk, 
+    .shape-envelope {
+        font-size: 15rem !important;
+        opacity: 0.1 !important;
+    }
+    
+    /* تحجيم السماعة عشان متخرجش بره حدود الشاشة في الموبايل */
+    .neon-headset {
+        transform: translate(-10vw, -50px) rotate(-10deg) !important;
     }
 }
