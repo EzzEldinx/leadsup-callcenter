@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeadsUp | Live Audio Proof</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <div class="global-spotlight"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrapper" aria-label="LeadsUp Home">
+                <img src="src/nav.png" alt="LeadsUp Icon" class="logo-icon" width="45" height="45" decoding="async" />
+                <span class="logo-text">Leads<span class="logo-text-gradient">Up</span></span>
+            </a>
+
+            <button class="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false" type="button">
+                <span class="hamburger"></span>
+            </button>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="text-blasting.html">Text Blasting</a>
+                <a href="audioproof.html">Audio Proof</a> 
+                <a href="index.html#industries">Who We Help</a>
+                <a href="index.html#pricing">Packages</a>
+                <a href="index.html#contact" class="btn-primary small-btn btn-black-text" style="padding: 10px 20px; color: #000;">Partner With Us</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section id="audio-proof" class="content-section relative" style="padding-top: 180px; padding-bottom: 120px; overflow: hidden !important;">
+            <div class="noise-bg"></div>
+            <div class="wave-layer hero-wave" style="opacity: 0.4;"></div>
+            
+            <div class="image-glow-bg color-3" style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 100vh; opacity: 0.3; z-index: 0; filter: blur(120px); pointer-events: none;"></div>
+
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 550px; z-index: 1; opacity: 0.35; pointer-events: none; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                <model-viewer 
+                    src="models/headset.glb" 
+                    auto-rotate 
+                    rotation-per-second="4deg"
+                    camera-orbit="0deg 90deg 100%"
+                    disable-zoom 
+                    disable-pan
+                    shadow-intensity="0"
+                    exposure="0.8"
+                    loading="lazy"
+                    style="width: 100%; height: 100%; max-width: 600px;">
+                </model-viewer>
+            </div>
+
+            <div class="container relative" style="z-index: 2;">
+                <div class="funnel-head reveal-item text-center mb-50">
+                    <div class="sp-kicker mx-auto mb-15" style="border-color: rgba(0, 208, 90, 0.3); background: rgba(0, 208, 90, 0.05); color: #00d05a;">
+                        <span class="pulse" style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#00d05a; margin-right:6px; box-shadow: 0 0 10px #00d05a;"></span>
+                        LIVE AUDIO PROOF
+                    </div>
+                    <h1 class="sp-title text-glow mx-auto" style="max-width: 900px; font-size: clamp(2.2rem, 4vw, 3.5rem);">
+                        The difference between a "no" <br><span class="text-animated-gradient">and a signed contract.</span>
+                    </h1>
+                    <p class="sp-text mx-auto" style="max-width: 700px; font-size: 1.1rem; color: #cbd5e1;">
+                        The quality of the first conversation is everything. We don't hide behind metrics—we let our results speak for themselves. Listen to how our elite agents bypass gatekeepers, uncover motivation, and close deals.
+                    </p>
+                </div>
+
+                <article class="audio-feature-card glass-effect reveal-item" style="border: 1px solid rgba(0, 208, 90, 0.3); box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0, 208, 90, 0.1);">
+                    <div class="caller-profile-header">
+                        <div class="caller-profile">
+                            <div class="caller-avatar">
+                                <img src="https://i.pravatar.cc/150?img=11" alt="Mark">
+                                <div class="online-dot"></div>
+                            </div>
+                            <div class="caller-info">
+                                <h4>Mark</h4>
+                                <span>Real Estate Cold Caller</span>
+                            </div>
+                        </div>
+                        <p class="audio-label" style="color: #00d05a; margin: 0;">LIVE CALL EXAMPLE 1</p>
+                    </div>
+
+                    <h3 style="margin-top: 15px; font-size: 1.4rem; color: #fff;">"How we uncover timing & motivation in under 2 minutes"</h3>
+                    
+                    <div class="pro-audio-player mt-20 mb-20" data-src="audio/record1.mp3">
+                        <audio src="audio/record1.mp3" preload="metadata"></audio>
+                        <button class="play-pause-btn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                        </button>
+                        <span class="time-display">0:00 / 4:39</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <button class="volume-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+                        </button>
+                    </div>
+                    
+                    <div class="audio-tags">
+                        <span class="tag-outline" style="border-color: rgba(0,208,90,0.4); color: #00d05a;">Discovery</span>
+                        <span class="tag-outline" style="border-color: rgba(0,208,90,0.4); color: #00d05a;">Rapport</span>
+                        <span class="tag-outline" style="border-color: rgba(0,208,90,0.4); color: #00d05a;">Real Estate</span>
+                    </div>
+                    <p class="audio-desc mt-15" style="color: #94a3b8; font-size: 0.95rem;">Mark demonstrates professional cold calling techniques with real estate prospects, building rapport and identifying opportunities.</p>
+                </article>
+
+                <div class="audio-mini-grid mt-40">
+                    <article class="audio-mini-card glass-effect reveal-item">
+                        <div class="caller-profile mb-15">
+                            <div class="caller-avatar"><img src="https://i.pravatar.cc/150?img=12" alt="Paul"><div class="online-dot"></div></div>
+                            <div class="caller-info"><h4>Paul</h4><span>Cold Caller</span></div>
+                        </div>
+                        <p class="audio-label mb-5" style="font-size: 0.7rem;">LIVE CALL EXAMPLE 2</p>
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Handling "Not Interested"</h4>
+                        
+                        <div class="pro-audio-player compact-player" data-src="audio/record2.mp3">
+                            <audio src="audio/record2.mp3" preload="metadata"></audio>
+                            <button class="play-pause-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+                            <span class="time-display">0:00 / 3:48</span>
+                            <div class="progress-bar"><div class="progress-fill"></div></div>
+                        </div>
+                    </article>
+                    
+                    <article class="audio-mini-card glass-effect reveal-item" style="transition-delay: 0.1s;">
+                        <div class="caller-profile mb-15">
+                            <div class="caller-avatar"><img src="https://i.pravatar.cc/150?img=5" alt="Lily"><div class="online-dot"></div></div>
+                            <div class="caller-info"><h4>Lily</h4><span>Cold Caller</span></div>
+                        </div>
+                        <p class="audio-label mb-5" style="font-size: 0.7rem;">LIVE CALL EXAMPLE 3</p>
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Gatekeeper Bypass</h4>
+                        
+                        <div class="pro-audio-player compact-player" data-src="audio/record3.mp3">
+                            <audio src="audio/record3.mp3" preload="metadata"></audio>
+                            <button class="play-pause-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+                            <span class="time-display">0:00 / 2:45</span>
+                            <div class="progress-bar"><div class="progress-fill"></div></div>
+                        </div>
+                    </article>
+
+                    <article class="audio-mini-card glass-effect reveal-item" style="transition-delay: 0.2s;">
+                        <div class="caller-profile mb-15">
+                            <div class="caller-avatar"><img src="https://i.pravatar.cc/150?img=15" alt="Thomas"><div class="online-dot"></div></div>
+                            <div class="caller-info"><h4>Thomas</h4><span>Cold Caller</span></div>
+                        </div>
+                        <p class="audio-label mb-5" style="font-size: 0.7rem;">LIVE CALL EXAMPLE 4</p>
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 5px;">Advanced Deal Closing</h4>
+                        
+                        <div class="pro-audio-player compact-player" data-src="audio/record4.mp3">
+                            <audio src="audio/record4.mp3" preload="metadata"></audio>
+                            <button class="play-pause-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+                            <span class="time-display">0:00 / 5:12</span>
+                            <div class="progress-bar"><div class="progress-fill"></div></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer relative angled-cut">
+        <div class="ambient-glow funnel-glow-left" style="top: 20%; opacity: 0.1;" aria-hidden="true"></div>
+        <div class="noise-bg"></div>
+    
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col brand-col">
+                    <a href="#" class="logo-wrapper" aria-label="LeadsUp Home" style="margin-bottom: 18px;">
+                        <img src="src/nav.png" alt="LeadsUp Icon" class="logo-icon" width="45" height="45" loading="lazy" decoding="async" />
+                        <span class="logo-text">Leads<span class="logo-text-gradient">Up</span></span>
+                    </a>
+                    <p class="footer-tagline">We don't cold call, We cash call.</p>
+                    <p class="footer-desc">The dedicated acquisitions engine for investors and operators. Elite callers, precision data, and battle-tested playbooks on tap.</p>
+                    <a href="index.html#contact" class="btn-primary small-btn footer-btn-gradient btn-black-text mt-15">Book a 15-min strategy call</a>
+                </div>
+    
+                <div class="footer-col links-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="index.html#industries">Industries We Serve</a></li>
+                        <li><a href="index.html#pricing">Pricing Plans</a></li>
+                        <li><a href="text-blasting.html">Text Plasting</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-col links-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About LeadsUp</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-col info-col">
+                    <h4>Contact & Info</h4>
+                    <ul class="info-list">
+                        <li><strong>Operated by:</strong> Adnan Ahmed</li>
+                        <li>Registered in WY, USA<br>Operating nationwide</li>
+                        <li class="contact-highlight"><a href="tel:+16466400558">+1 (646) 640-0558</a></li>
+                        <li><a href="mailto:info@leadsupcallcenter.com">info@leadsupcallcenter.com</a></li>
+                    </ul>
+                    <div class="support-box">
+                        <p class="support-title">Support hours</p>
+                        <p>Monday – Friday · 9am – 6pm EST</p>
+                        <p class="support-alert">24/7 campaign monitoring with real-time alerts for escalated opportunities.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2026 LeadsUp Call Center. All rights reserved.
+                </div>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <span class="separator">·</span>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+    
+            <div class="designer-signature mt-10">
+                <span class="muted-text">Engineered for dominance by</span> 
+                <a href="https://ezzeldin.tech/" target="_blank" class="designer-link-pro">
+                    E.E Technologies 
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" stroke="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
