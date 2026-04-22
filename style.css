@@ -873,8 +873,8 @@ h3 {
        الطبقة التانية: الصورة بتاعتك، ومظبوطة إنها تغطي المساحة كلها وتتوسط.
     */
     background: 
-        linear-gradient(180deg, rgba(3, 3, 4, 0.98) 0%, rgba(10, 14, 20, 0.85) 50%, rgba(3, 3, 4, 0.98) 100%),
-        url('src/about-realestate.jpg') center/cover no-repeat;
+        linear-gradient(180deg, rgba(3, 3, 4, 0.685) 0%, rgba(10, 14, 20, 0.85) 50%, rgba(3, 3, 4, 0.98) 100%),
+        url('src/photo1.jpeg') center/cover no-repeat;
     
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
